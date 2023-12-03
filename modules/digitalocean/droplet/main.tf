@@ -15,7 +15,7 @@ resource "digitalocean_droplet" "droplet" {
   name              = "app-srv-${count.index}"
   region            = var.region
   size              = var.size
-  tags              = [digitalocean_tag.default_tags.id]
+  tags              = concat(var.tags, [digitalocean_tag.default_tags.id])
 }
 
 resource "digitalocean_tag" "default_tags" {

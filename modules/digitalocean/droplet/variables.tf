@@ -20,3 +20,7 @@ variable "default_tag" {
   type    = string
   default = "terraform"
 }
+
+variable "tags" {
+  type = list(string)
+}
