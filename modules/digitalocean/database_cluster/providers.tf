@@ -6,9 +6,3 @@ terraform {
     }
   }
 }
-
-# TODO: Add Remote S3 State Backend
-
-provider "digitalocean" {
-  token = var.do_token
-}

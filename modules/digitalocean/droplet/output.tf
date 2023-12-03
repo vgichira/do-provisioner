@@ -9,3 +9,7 @@ output "droplets_ipv6_address" {
 output "droplets_status" {
   value = digitalocean_droplet.droplet[*].status
 }
+
+output "urn" {
+  value = digitalocean_droplet.droplet[*].urn
+}
