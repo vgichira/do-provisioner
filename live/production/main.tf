@@ -1,51 +1,53 @@
 locals {
   project-name = "Production"
   environment  = "Production"
+  ubuntu20_image_slug = "ubuntu-20-04-x64"
+  ubuntu23_image_slug = "ubuntu-23-10-x64"
   servers = {
     mysql-srv = {
-      image  = "ubuntu-20-04-x64"
+      image  = local.ubuntu20_image_slug
       size   = "s-1vcpu-1gb"
       tags   = ["production"]
       region = "nyc3"
     }
 
     redis-srv = {
-      image  = "ubuntu-23-10-x64"
+      image  = local.ubuntu23_image_slug
       size   = "s-1vcpu-1gb"
       tags   = ["production"]
       region = "nyc3"
     }
 
     kafka-srv = {
-      image  = "ubuntu-23-10-x64"
+      image  = local.ubuntu23_image_slug
       size   = "s-1vcpu-1gb"
       tags   = ["production"]
       region = "nyc3"
     }
 
     user-microsvc-srv = {
-      image  = "ubuntu-23-10-x64"
+      image  = local.ubuntu23_image_slug
       size   = "s-1vcpu-1gb"
       tags   = ["production"]
       region = "nyc3"
     }
 
     inventory-microsvc-srv = {
-      image  = "ubuntu-23-10-x64"
+      image  = local.ubuntu23_image_slug
       size   = "s-1vcpu-1gb"
       tags   = ["production"]
       region = "nyc3"
     }
 
     order-microsvc-srv = {
-      image  = "ubuntu-23-10-x64"
+      image  = local.ubuntu23_image_slug
       size   = "s-1vcpu-1gb"
       tags   = ["production"]
       region = "nyc3"
     }
 
     fullfilment-microsvc-srv = {
-      image  = "ubuntu-23-10-x64"
+      image  = local.ubuntu23_image_slug
       size   = "s-1vcpu-1gb"
       tags   = ["production"]
       region = "nyc3"
