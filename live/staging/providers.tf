@@ -1,12 +1,12 @@
 terraform {
-  # backend "s3" {
-  #   bucket         = "staging-terraform-state"
-  #   key            = "global/s3/terraform.tfstate"
-  #   region         = "us-east-2"
+  backend "s3" {
+    bucket         = "staging-terraform-state"
+    key            = "global/s3/terraform.tfstate"
+    region         = "us-east-2"
 
-  #   dynamodb_table = "staging-terraform-state-locks"
-  #   encrypt        = true
-  # }
+    dynamodb_table = "staging-terraform-state-locks"
+    encrypt        = true
+  }
 
   required_providers {
     digitalocean = {

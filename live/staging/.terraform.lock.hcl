@@ -26,7 +26,8 @@ provider "registry.terraform.io/digitalocean/digitalocean" {
 }
 
 provider "registry.terraform.io/hashicorp/aws" {
-  version = "5.29.0"
+  version     = "5.29.0"
+  constraints = "~> 5.29"
   hashes = [
     "h1:+4qYlyPaktjZTFP9UbpEaz55jfwWapdibViCPoRFf+s=",
     "zh:0453c1c64e51cd7050ce46d9280a0195b9073592508077ebf1a1c45f7026f3f5",
