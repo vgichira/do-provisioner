@@ -5,14 +5,26 @@ locals {
   database_engine = "mysql"
   database_name = "staging_db"
   database_users = ["johndoe", "janedoe"]
+
+  servers = {
+    staging-srv1   = {
+      image   = "ubuntu-20-04-x64"
+      size    = "s-1vcpu-1gb"
+      tags    = ["staging"]
+      region  = "nyc3"
+    }
+    staging-srv2   = {
+      image   = "ubuntu-20-04-x64"
+      size    = "s-1vcpu-2gb"
+      tags    = ["staging"]
+      region  = "nyc1"
+    }
+  }
 }
 
 module "droplet" {
-  source        = "../../modules/digitalocean/droplet"
-  droplet_count = 2
-  image         = "ubuntu-20-04-x64"
-  size          = "s-1vcpu-1gb"
-  tags          = ["staging"]
+  source    = "../../modules/digitalocean/droplet"
+  servers   = local.servers
 }
 
 module "project" {
@@ -20,7 +32,7 @@ module "project" {
   project_name = local.project-name
   environment = local.environment
   default = false
-  resources = concat(module.droplet.urn, [module.database_cluster.urn])
+  resources = concat(values(module.droplet.urn), [module.database_cluster.urn])
 }
 
 module "database_cluster" {
@@ -47,7 +59,7 @@ module "database_firewall" {
   cluster_id = module.database_cluster.cluster_id
   firewall_rules = {
     ip_addr = ["41.60.235.204", "41.60.235.205"]
-    droplet = module.droplet.id
+    droplet = values(module.droplet.id)
   }
 
 }

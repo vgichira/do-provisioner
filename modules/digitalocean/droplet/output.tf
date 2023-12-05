@@ -1,19 +1,11 @@
 output "droplets_ipv4_address" {
-  value = digitalocean_droplet.droplet[*].ipv4_address
-}
-
-output "droplets_ipv6_address" {
-  value = digitalocean_droplet.droplet[*].ipv6_address
-}
-
-output "droplets_status" {
-  value = digitalocean_droplet.droplet[*].status
+  value = { for key, value in digitalocean_droplet.droplet : key => value.ipv4_address }
 }
 
 output "urn" {
-  value = digitalocean_droplet.droplet[*].urn
+  value = { for key, value in digitalocean_droplet.droplet : key => value.urn }
 }
 
 output "id" {
-  value = digitalocean_droplet.droplet[*].id
+  value = { for key, value in digitalocean_droplet.droplet : key => value.id }
 }
