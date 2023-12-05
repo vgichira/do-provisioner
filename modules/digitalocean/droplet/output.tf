@@ -13,3 +13,7 @@ output "droplets_status" {
 output "urn" {
   value = digitalocean_droplet.droplet[*].urn
 }
+
+output "id" {
+  value = digitalocean_droplet.droplet[*].id
+}

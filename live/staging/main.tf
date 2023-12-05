@@ -45,7 +45,9 @@ module "database_user" {
 module "database_firewall" {
   source = "../../modules/digitalocean/database_firewall"
   cluster_id = module.database_cluster.cluster_id
-  rules = {
-    ip_addr = "41.60.235.204"
+  firewall_rules = {
+    ip_addr = ["41.60.235.204", "41.60.235.205"]
+    droplet = module.droplet.id
   }
+
 }
